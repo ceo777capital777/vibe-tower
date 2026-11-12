@@ -68,6 +68,43 @@ html.tg-mini-app {
   scroll-padding-left: var(--vt-safe-left);
 }
 
+/*
+  Phone and Mini App: entrance motion must not be the only way content appears.
+  Inline opacity/transform from Motion loses to these rules, including when the
+  WebView never finishes the animation or reports a bogus scroll progress.
+*/
+@media (max-width: 767px) {
+  main > div,
+  [data-reveal],
+  [data-hero-copy],
+  [data-hero-copy] *,
+  [data-hero-stats],
+  [data-hero-stats] * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-hero] [data-parallax] {
+    transform: none !important;
+  }
+}
+
+html.tg-mini-app main > div,
+html.tg-mini-app [data-reveal],
+html.tg-mini-app [data-hero-copy],
+html.tg-mini-app [data-hero-copy] *,
+html.tg-mini-app [data-hero-stats],
+html.tg-mini-app [data-hero-stats] *,
+html.tg-mini-app [data-hero] [data-parallax] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* In a Mini App, don't stretch the entrance into a viewport-tall empty field. */
+html.tg-mini-app [data-hero] {
+  min-height: 0;
+}
+
 html.tg-mini-app body {
   padding-right: var(--vt-safe-right);
   padding-bottom: var(--vt-safe-bottom);

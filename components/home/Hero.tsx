@@ -23,14 +23,15 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-      {/* Панорама */}
+    <section ref={ref} data-hero="" className="relative isolate flex flex-col overflow-hidden md:min-h-[100svh]">
+      {/* Панорама. Файл напрямую: оптимизатор Next отдаёт Content-Disposition: attachment, и WebView Telegram его не рисует. */}
       <motion.div data-parallax="" className="absolute inset-0 -z-20" style={{ y: bgY, scale: bgScale }}>
         <Image
           src="/images/hero.webp"
           alt="Ночная панорама небоскрёбов делового центра"
           fill
           priority
+          unoptimized
           sizes="100vw"
           className="object-cover object-[60%_40%]"
         />
@@ -56,7 +57,12 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
         </p>
       </div>
 
-      <motion.div data-parallax="" style={{ y: contentY, opacity: fade }} className="flex flex-1 items-end pt-[calc(8rem+var(--vt-safe-top,0px))] pb-[calc(2.5rem+var(--vt-safe-bottom,0px))] md:items-center md:pb-[var(--vt-safe-bottom,0px)]">
+      <motion.div
+        data-parallax=""
+        data-hero-copy=""
+        style={{ y: contentY, opacity: fade }}
+        className="flex flex-col pt-[calc(6.5rem+var(--vt-safe-top,0px))] md:flex-1 md:items-center md:justify-center md:pt-[calc(8rem+var(--vt-safe-top,0px))] md:pb-[var(--vt-safe-bottom,0px)]"
+      >
         <Container>
           <motion.p
             className="eyebrow mb-7 flex items-center gap-3"
@@ -110,10 +116,11 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
 
       {/* Панель показателей */}
       <motion.div
+        data-hero-stats=""
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease, delay: 1.05 }}
-        className="relative pb-[calc(2rem+var(--vt-safe-bottom,0px))] md:pb-[calc(2.5rem+var(--vt-safe-bottom,0px))]"
+        className="relative mt-10 pb-[calc(2rem+var(--vt-safe-bottom,0px))] md:mt-0 md:pb-[calc(2.5rem+var(--vt-safe-bottom,0px))]"
       >
         <Container className="flex items-end justify-between gap-6">
           <dl className="glass grid flex-1 grid-cols-2 divide-line overflow-hidden rounded-3xl sm:grid-cols-4 sm:divide-x md:max-w-3xl">
