@@ -46,7 +46,7 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed top-[var(--vt-safe-top,0px)] right-[var(--vt-safe-right,0px)] left-[var(--vt-safe-left,0px)] z-50">
       <div
         className={cn(
           "mx-auto mt-3 flex h-16 w-[calc(100%-1.5rem)] max-w-[1320px] items-center justify-between rounded-full px-4 transition-all duration-500 sm:px-6",
@@ -115,7 +115,7 @@ export function Header() {
           <motion.nav
             id="mobile-menu"
             aria-label="Мобильная навигация"
-            className="glass glass-strong fixed inset-x-3 top-[5.25rem] rounded-3xl p-3 lg:hidden"
+            className="glass glass-strong fixed top-[calc(5.25rem+var(--vt-safe-top,0px))] right-[calc(0.75rem+var(--vt-safe-right,0px))] left-[calc(0.75rem+var(--vt-safe-left,0px))] rounded-3xl p-3 lg:hidden"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}

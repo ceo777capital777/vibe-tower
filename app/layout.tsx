@@ -6,7 +6,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { SearchDialog } from "@/components/search/SearchDialog";
+import { TelegramMiniApp } from "@/components/telegram/TelegramMiniApp";
 import { SpotlightTracker } from "@/components/ui/SpotlightTracker";
+import { telegramBootstrap } from "@/lib/telegram/bootstrap";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -53,11 +55,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${manrope.variable} ${unbounded.variable} antialiased`}>
+    <html lang="ru" className={`${manrope.variable} ${unbounded.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-screen overflow-x-clip">
+        <script id="tg-bootstrap" dangerouslySetInnerHTML={{ __html: telegramBootstrap }} />
+        <TelegramMiniApp />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-[calc(1rem+var(--vt-safe-left,0px))] focus:top-[calc(1rem+var(--vt-safe-top,0px))] focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2"
         >
           Перейти к содержимому
         </a>

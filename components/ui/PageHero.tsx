@@ -21,7 +21,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden pb-14 pt-32 md:pb-20 md:pt-40">
+    <section className="relative isolate overflow-hidden pt-[calc(8rem+var(--vt-safe-top,0px))] pb-14 md:pt-[calc(10rem+var(--vt-safe-top,0px))] md:pb-20">
       <div className="absolute inset-0 -z-10">
         <Image src={image} alt="" fill priority sizes="100vw" className="object-cover object-center opacity-35" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(7_9_13/0.55)_0%,rgb(7_9_13/0.8)_55%,#07090d_100%)]" />

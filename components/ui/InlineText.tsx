@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 
 const TOKEN = /(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\(https?:\/\/[^)\s]+\)|\*[^*\s][^*]*\*)/g;
 
@@ -20,9 +21,9 @@ export function InlineText({ text }: { text: string }) {
         const link = /^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/.exec(part);
         if (link) {
           return (
-            <a key={i} href={link[2]} target="_blank" rel="noopener noreferrer nofollow">
+            <ExternalLink key={i} href={link[2]} rel="noopener noreferrer nofollow">
               {link[1]}
-            </a>
+            </ExternalLink>
           );
         }
         return <Fragment key={i}>{part}</Fragment>;

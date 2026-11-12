@@ -8,9 +8,20 @@ import { searchEntries, type SearchEntry } from "@/lib/search";
 import { cn } from "@/lib/utils";
 
 export const OPEN_SEARCH_EVENT = "vt:open-search";
+export const CLOSE_SEARCH_EVENT = "vt:close-search";
+
+let searchDialogOpen = false;
+
+export function isSearchDialogOpen() {
+  return searchDialogOpen;
+}
 
 export function openSearch() {
   window.dispatchEvent(new Event(OPEN_SEARCH_EVENT));
+}
+
+export function closeSearch() {
+  window.dispatchEvent(new Event(CLOSE_SEARCH_EVENT));
 }
 
 const suggestions = ["Cursor", "лендинг", "первый заказ", "анимации", "ошибки", "оплата"];
@@ -39,11 +50,24 @@ export function SearchDialog() {
         setOpen(true);
       }
     };
+    const onClose = () => setOpen(false);
     window.addEventListener(OPEN_SEARCH_EVENT, onOpen);
+    window.addEventListener(CLOSE_SEARCH_EVENT, onClose);
     window.addEventListener("keydown", onKey);
     return () => {
       window.removeEventListener(OPEN_SEARCH_EVENT, onOpen);
+      window.removeEventListener(CLOSE_SEARCH_EVENT, onClose);
       window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  useEffect(() => {
+    searchDialogOpen = open;
+  }, [open]);
+
+  useEffect(() => {
+    return () => {
+      searchDialogOpen = false;
     };
   }, []);
 
@@ -97,7 +121,7 @@ export function SearchDialog() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[80] flex items-start justify-center px-4 pt-[12vh]"
+          className="fixed top-[var(--vt-safe-top,0px)] right-[var(--vt-safe-right,0px)] bottom-[var(--vt-safe-bottom,0px)] left-[var(--vt-safe-left,0px)] z-[80] flex items-start justify-center px-4 pt-[12vh]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

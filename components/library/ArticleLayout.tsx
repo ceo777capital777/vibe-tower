@@ -42,7 +42,7 @@ export function ArticleLayout({ article }: { article: Article }) {
 
   return (
     <article>
-      <header className="relative isolate overflow-hidden pb-12 pt-32 md:pb-16 md:pt-40">
+      <header className="relative isolate overflow-hidden pt-[calc(8rem+var(--vt-safe-top,0px))] pb-12 md:pt-[calc(10rem+var(--vt-safe-top,0px))] md:pb-16">
         <div className="absolute inset-0 -z-10">
           <Image src={category.image} alt="" fill priority sizes="100vw" className="object-cover opacity-25" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(7_9_13/0.6),#07090d_92%)]" />
@@ -177,7 +177,7 @@ export function ArticleLayout({ article }: { article: Article }) {
         </div>
 
         <aside className="hidden lg:block">
-          <div className="sticky top-28 space-y-8">
+          <div className="sticky top-[calc(7rem+var(--vt-safe-top,0px))] space-y-8">
             <ArticleToc items={toc} />
             <div className="glass rounded-2xl p-5">
               <Wand2 className="size-5 text-accent-2" aria-hidden />

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight, Bot } from "lucide-react";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import type { ShowcaseProject } from "@/content/types";
 import { cn } from "@/lib/utils";
 
@@ -64,14 +65,12 @@ export function ShowcaseCard({ project, reverse = false }: { project: ShowcasePr
 
         <div className="mt-auto pt-8">
           {project.url ? (
-            <a
+            <ExternalLink
               href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-display text-[0.7rem] uppercase tracking-[0.2em] text-white transition-colors hover:text-accent-2"
             >
               Открыть проект <ArrowUpRight className="size-4" aria-hidden />
-            </a>
+            </ExternalLink>
           ) : (
             <span className="text-xs text-white/40">Ссылка недоступна публично</span>
           )}
