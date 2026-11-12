@@ -99,7 +99,7 @@ export function ResultView({
     <div className="grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
       {/* Навигация по разделам */}
       <aside className="hidden lg:block">
-        <nav aria-label="Разделы ТЗ" className="sticky top-28">
+        <nav aria-label="Разделы ТЗ" className="sticky top-[calc(7rem+var(--vt-safe-top,0px))]">
           <p className="eyebrow mb-4 text-white/45">Разделы</p>
           <ol className="space-y-0.5">
             {GENERATOR_SECTIONS.map((s) => {
@@ -131,7 +131,7 @@ export function ResultView({
 
       <div className="min-w-0">
         {/* Панель действий */}
-        <div className="glass glass-strong sticky top-[5.5rem] z-20 mb-5 flex flex-wrap items-center gap-2 rounded-2xl p-2.5">
+        <div className="glass glass-strong sticky top-[calc(5.5rem+var(--vt-safe-top,0px))] z-20 mb-5 flex flex-wrap items-center gap-2 rounded-2xl p-2.5">
           <span className="mr-auto flex items-center gap-2 px-2 text-xs text-muted">
             {streaming ? (
               <>

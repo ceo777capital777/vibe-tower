@@ -66,7 +66,7 @@ function Catalog({
 
   return (
     <div>
-      <div className="glass glass-strong sticky top-[5.5rem] z-30 rounded-3xl p-3 md:p-4">
+      <div className="glass glass-strong sticky top-[calc(5.5rem+var(--vt-safe-top,0px))] z-30 rounded-3xl p-3 md:p-4">
         <label className="flex items-center gap-3 rounded-2xl border border-line bg-black/25 px-4 focus-within:border-accent-2/50">
           <Search className="size-5 shrink-0 text-accent-2" aria-hidden />
           <input

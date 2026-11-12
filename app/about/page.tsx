@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Send } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -45,7 +46,7 @@ const blocks = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden pb-16 pt-32 md:pt-40">
+      <section className="relative isolate overflow-hidden pt-[calc(8rem+var(--vt-safe-top,0px))] pb-16 md:pt-[calc(10rem+var(--vt-safe-top,0px))]">
         <div className="absolute inset-0 -z-10">
           <Image src="/images/lowangle.webp" alt="" fill priority sizes="100vw" className="object-cover opacity-20" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(7_9_13/0.5),#07090d_90%)]" />
@@ -138,14 +139,12 @@ export default function AboutPage() {
               <p className="text-2xl font-semibold text-white">{site.author.telegramHandle}</p>
               <p className="mt-2 max-w-md text-sm text-muted">Заказать сайт или бота, предложить материал для платформы или просто задать вопрос.</p>
             </div>
-            <a
+            <ExternalLink
               href={site.author.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex h-14 items-center gap-3 rounded-full bg-accent px-7 font-display text-[0.74rem] uppercase tracking-[0.14em] text-white transition hover:bg-[#3a78ff]"
             >
               <Send className="size-4" aria-hidden /> Telegram
-            </a>
+            </ExternalLink>
           </GlassPanel>
         </Reveal>
 

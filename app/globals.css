@@ -39,6 +39,11 @@
 
 :root {
   color-scheme: dark;
+  /* Zero outside a Mini App, so fixed offsets match the public site. */
+  --vt-safe-top: 0px;
+  --vt-safe-right: 0px;
+  --vt-safe-bottom: 0px;
+  --vt-safe-left: 0px;
 }
 
 html {
@@ -53,6 +58,20 @@ body {
   font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
   text-rendering: optimizeLegibility;
+}
+
+/* Telegram chrome and the device safe area. Applied only after the Mini App boots. */
+html.tg-mini-app {
+  scroll-padding-top: var(--vt-safe-top);
+  scroll-padding-right: var(--vt-safe-right);
+  scroll-padding-bottom: var(--vt-safe-bottom);
+  scroll-padding-left: var(--vt-safe-left);
+}
+
+html.tg-mini-app body {
+  padding-right: var(--vt-safe-right);
+  padding-bottom: var(--vt-safe-bottom);
+  padding-left: var(--vt-safe-left);
 }
 
 ::selection {

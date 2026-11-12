@@ -131,6 +131,20 @@ ANTHROPIC_API_KEY=ваш_ключ_anthropic
 
 ---
 
+## Telegram Mini App
+
+Тот же сайт открывается внутри Telegram как Mini App: вход, хаб, библиотека, генератор, каталог инструментов, проекты, страница автора и глобальный поиск. В обычном браузере вид и поведение не меняются. Официальный SDK Telegram подключается только если страница открыта как Mini App.
+
+Как привязать адрес в [@BotFather](https://t.me/BotFather):
+
+1. Если бота ещё нет, создайте его командой `/newbot`.
+2. Укажите URL Mini App: `https://vibe-tower.onrender.com`.
+   - `/mybots` → выберите бота → **Bot Settings** → **Configure Mini App** или **Menu Button** и вставьте этот URL.
+   - Либо `/newapp`, если нужна прямая ссылка вида `https://t.me/<bot>/<short_name>` — в поле Web App URL тот же адрес.
+3. Откройте бота в Telegram и запустите приложение. Кнопка «Назад» Telegram ведёт по разделам. Официальные сайты инструментов и контакт [https://t.me/Dimoglov_official](https://t.me/Dimoglov_official) открываются через Telegram (`openLink` / `openTelegramLink`).
+
+Необязательная проверка `initData` на сервере: задайте `TELEGRAM_BOT_TOKEN` (токен от BotFather) в переменных окружения хостинга, например Render → Environment. Сайт полностью работает и без неё. **Токен бота нельзя коммитить**, класть в клиентский код или в переменные с префиксом `NEXT_PUBLIC_`. Файлы `.env*` уже в `.gitignore`.
+
 ## Хостинг
 
 Сайт рассчитан на **Vercel** или любой **Node.js-хостинг** (Render, Railway, VPS с `npm run build && npm run start`). Генератору нужен серверный API-маршрут `/api/generate`, поэтому **статический хостинг вроде GitHub Pages не подходит**: генератор там работать не будет.

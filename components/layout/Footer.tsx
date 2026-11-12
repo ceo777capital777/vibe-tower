@@ -3,6 +3,7 @@ import { Send } from "lucide-react";
 import { categories } from "@/content/categories";
 import { mainNav, site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -15,14 +16,12 @@ export function Footer() {
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
             Бесплатная платформа о вайб-кодинге: гайды, промпты, AI-инструменты и генератор технических заданий.
           </p>
-          <a
+          <ExternalLink
             href={site.author.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm text-white/85 transition hover:border-accent-2/60 hover:text-white"
           >
             <Send className="size-4 text-accent-2" aria-hidden /> {site.author.telegramHandle}
-          </a>
+          </ExternalLink>
         </div>
 
         <FooterCol title="Платформа" links={mainNav.map((n) => ({ href: n.href, label: n.hint }))} />

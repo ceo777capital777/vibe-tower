@@ -22,7 +22,13 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          // Telegram Web opens a Mini App in an iframe. frame-ancestors replaces X-Frame-Options,
+          // which would block web.telegram.org. A top-level browser visit is unaffected.
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-ancestors 'self' https://web.telegram.org https://webk.telegram.org https://webz.telegram.org https://*.telegram.org",
+          },
         ],
       },
     ];

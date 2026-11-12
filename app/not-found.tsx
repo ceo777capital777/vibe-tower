@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 
 export default function NotFound() {
   return (
-    <section className="relative isolate flex min-h-[88svh] items-center overflow-hidden pt-24">
+    <section className="relative isolate flex min-h-[calc(88svh-var(--vt-safe-top,0px)-var(--vt-safe-bottom,0px))] items-center overflow-hidden pt-[calc(6rem+var(--vt-safe-top,0px))]">
       <div className="absolute inset-0 -z-10">
         <Image src="/images/fog-towers.webp" alt="" fill sizes="100vw" className="object-cover opacity-30" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(7_9_13/0.4),#07090d_85%)]" />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -60,9 +61,9 @@ export function ButtonLink({
   const cls = cn(base, variants[variant], sizes[size], className);
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} {...rest}>
+      <ExternalLink href={href} className={cls} {...rest}>
         <Inner arrow={arrow}>{children}</Inner>
-      </a>
+      </ExternalLink>
     );
   }
   return (

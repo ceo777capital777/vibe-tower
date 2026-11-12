@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, BookOpen } from "lucide-react";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import type { Tool } from "@/content/types";
 import { toolCategoryLabel } from "@/content/tools";
 import { ToolLogo } from "./ToolLogo";
@@ -24,16 +25,14 @@ export function ToolCard({ tool }: { tool: Tool }) {
         ))}
       </ul>
       <div className="mt-auto flex items-center justify-between gap-3 pt-6">
-        <a
+        <ExternalLink
           href={tool.url}
-          target="_blank"
-          rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/85 transition-colors hover:text-accent-2"
           aria-label={`Официальный сайт ${tool.name} (${host}), откроется в новой вкладке`}
         >
           {host}
           <ArrowUpRight className="size-4" aria-hidden />
-        </a>
+        </ExternalLink>
         {tool.guide && (
           <Link href={tool.guide} className="inline-flex items-center gap-1.5 text-xs text-muted transition-colors hover:text-white">
             <BookOpen className="size-3.5" aria-hidden /> Гайд

@@ -56,7 +56,7 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
         </p>
       </div>
 
-      <motion.div data-parallax="" style={{ y: contentY, opacity: fade }} className="flex flex-1 items-end pb-10 pt-32 md:items-center md:pb-0">
+      <motion.div data-parallax="" style={{ y: contentY, opacity: fade }} className="flex flex-1 items-end pt-[calc(8rem+var(--vt-safe-top,0px))] pb-[calc(2.5rem+var(--vt-safe-bottom,0px))] md:items-center md:pb-[var(--vt-safe-bottom,0px)]">
         <Container>
           <motion.p
             className="eyebrow mb-7 flex items-center gap-3"
@@ -113,7 +113,7 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease, delay: 1.05 }}
-        className="relative pb-8 md:pb-10"
+        className="relative pb-[calc(2rem+var(--vt-safe-bottom,0px))] md:pb-[calc(2.5rem+var(--vt-safe-bottom,0px))]"
       >
         <Container className="flex items-end justify-between gap-6">
           <dl className="glass grid flex-1 grid-cols-2 divide-line overflow-hidden rounded-3xl sm:grid-cols-4 sm:divide-x md:max-w-3xl">
